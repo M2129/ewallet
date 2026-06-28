@@ -1,8 +1,11 @@
 <?php
+// Point d'entrée — charge tous les fichiers et lance l'application
 require_once 'validator.php';
 require_once 'repository.php';
 require_once 'services.php';
 require_once 'controller.php';
+
+use function EWallet\Controller\{afficherMenu, traiterChoix};
 
 // Données stockées en mémoire (simulation base de données)
 $wallets = [
@@ -11,7 +14,7 @@ $wallets = [
 ];
 $transactions = [];
 
-// Boucle principale
+// Boucle principale — s'arrête uniquement quand l'utilisateur saisit 0
 do {
     afficherMenu();
     $choix = readline("Votre choix : ");
